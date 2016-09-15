@@ -511,6 +511,7 @@ public class Lutra1_2 implements PlugIn{
 		String[] titles; // String containing the titles of the images
 		String savemode=new String(); // contains the choosen saving option
 		String[] editp={"red", "green", "blue", "all"}; // Scroll-down for editing p-values
+		String[] film = {"EBT3", "HD810"};
 		String directory = new String(); // contains the directory that the image will be saved to
 		GenericDialog gd, customgd; // interaction with the user
 		ImagePlus img; // needed for accessing the opened images
@@ -614,6 +615,7 @@ public class Lutra1_2 implements PlugIn{
 		}
 		gd.addChoice("Choose Color Channel", editp, "red");
 		gd.addCheckbox("Do the files include Stacks?", false);
+		gd.addChoice("Kind of film:", film, "EBT3");
 		gd.addChoice("Savemode?", savemodes, "Don't save");
 		gd.showDialog();
 		if (gd.wasCanceled()) return; // User may cancel Plugin
@@ -622,17 +624,29 @@ public class Lutra1_2 implements PlugIn{
 		boolean stacky = gd.getNextBoolean();
 		String imagename = gd.getNextChoice();
 		String editop = gd.getNextChoice();
+		String films = gd.getNextChoice();
 		savemode=gd.getNextChoice();
+
+		double p1r, p2r, p3r, bckgr, unexpr, maxdosr, p1g, p2g, p3g, bckgg, unexpg, maxdosg, p1b, p2b, p3b, bckgb, unexpb, maxdosb;  
+		if(films == "EBT3"){
+			p1r = 10.22; p2r = 2.97; p3r = 1.8; bckgr = 0; unexpr = 170; maxdosr = 40; 
+			p1g = 19.18; p2g = 44.82; p3g = 2.04; bckgg = 0; unexpg = 170.9; maxdosg = 40; 
+			p1b = 103.98; p2b = 1.945; p3b = 0; bckgb = 0; unexpb = 75.7; maxdosb = 40; 
+			}else{
+			p1r = 0; p2r = 0; p3r = 0; bckgr = 0; unexpr = 0; maxdosr = 0; 
+			p1g = 0; p2g = 0; p3g = 0; bckgg = 0; unexpg = 0; maxdosg = 0; 
+			p1b = 0; p2b = 0; p3b = 0; bckgb = 0; unexpb = 0; maxdosb = 0;
+			}
 
 			if (editop.equals("blue")==true){
 			customgd = new GenericDialog("Lutra", IJ.getInstance()); //Dialogue that only appears if p-values set to "customized"
 			customgd.addMessage("Customize parameters blue"); 
-			customgd.addNumericField("Blue (high dose) p1", 103.98, 3);
-        	customgd.addNumericField("Blue (high dose) p2", 1.945, 3);
-        	customgd.addNumericField("Blue (high dose) p3", 0, 3);
-			customgd.addNumericField("Dark current of the scanner", 0, 2);
-			customgd.addNumericField("Transparency of the unexposed film", 75.7, 2);
-			customgd.addNumericField("Maximum dose film can detect", 40, 0);
+			customgd.addNumericField("Blue p1", p1b, 3);
+        	customgd.addNumericField("Blue p2", p2b, 3);
+        	customgd.addNumericField("Blue p3", p3b, 3);
+			customgd.addNumericField("Dark current of the scanner", bckgb, 2);
+			customgd.addNumericField("Transparency of the unexposed film", unexpb, 2);
+			customgd.addNumericField("Maximum dose film can detect", maxdosb, 0);
 
        		customgd.showDialog();
 			if (customgd.wasCanceled()) return;
@@ -649,12 +663,12 @@ public class Lutra1_2 implements PlugIn{
 		else if (editop.equals("green")==true){
 			customgd = new GenericDialog("Lutra", IJ.getInstance()); //Dialogue that only appears if p-values set to "customized"
 			customgd.addMessage("Customize parameters green");
-			customgd.addNumericField("Green (medium dose) p1", 19.18214, 3);
-        	customgd.addNumericField("Green (medium dose) p2", 44.81919, 3);
-        	customgd.addNumericField("Green (medium dose) p3", 2.04147, 3);
-        	customgd.addNumericField("Dark current of the scanner", 0, 2);
-			customgd.addNumericField("Transparency of the unexposed film", 170.9, 2);
-			customgd.addNumericField("Maximum dose film can detect", 40, 0);
+			customgd.addNumericField("Green p1", p1g, 3);
+        	customgd.addNumericField("Green p2", p2g, 3);
+        	customgd.addNumericField("Green p3", p3g, 3);
+        	customgd.addNumericField("Dark current of the scanner", bckgg, 2);
+			customgd.addNumericField("Transparency of the unexposed film", unexpg, 2);
+			customgd.addNumericField("Maximum dose film can detect", maxdosg, 0);
         	 customgd.showDialog();
 			if (customgd.wasCanceled()) return;
         	p1 =  customgd.getNextNumber();
@@ -669,12 +683,12 @@ public class Lutra1_2 implements PlugIn{
 		else if (editop.equals("red")==true){
 	   		customgd = new GenericDialog("Lutra", IJ.getInstance()); //Dialogue that only appears if p-values set to "customized"
 			customgd.addMessage("Customize parameters red");
-			customgd.addNumericField("Red (low dose) p1", 10.22, 5); // Suggestions for parameters
-			customgd.addNumericField("Red (low dose) p2", 2.97, 5);
-			customgd.addNumericField("Red(low dose) p3", 1.8, 3);
-			customgd.addNumericField("Dark current of the scanner", 0, 2);
-			customgd.addNumericField("Transparency of the unexposed film", 170, 2);
-			customgd.addNumericField("Maximum dose film can detect", 40, 0);
+			customgd.addNumericField("Red p1", p1r, 5); // Suggestions for parameters
+			customgd.addNumericField("Red p2", p2r, 5);
+			customgd.addNumericField("Red p3", p3r, 3);
+			customgd.addNumericField("Dark current of the scanner", bckgr, 2);
+			customgd.addNumericField("Transparency of the unexposed film", unexpr, 2);
+			customgd.addNumericField("Maximum dose film can detect", maxdosr, 0);
         	 customgd.showDialog();
 			if (customgd.wasCanceled()) return;
         	p1 =  customgd.getNextNumber();
