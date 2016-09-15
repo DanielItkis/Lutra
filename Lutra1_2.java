@@ -567,10 +567,53 @@ public class Lutra1_2 implements PlugIn{
 			case 7: 
 			String[] names7 = {titles[0], titles[1], titles[2],titles[3],titles[4],titles[5],titles[6],"all"};
 			gd.addChoice("Which files?", names7, titles[0]);
-			break;		
+			break;
+
+			case 8: 
+			String[] names8 = {titles[0], titles[1], titles[2],titles[3],titles[4],titles[5],titles[6],titles[7],"all"};
+			gd.addChoice("Which files?", names8, titles[0]);
+			break;
+
+			case 9: 
+			String[] names9 = {titles[0], titles[1], titles[2],titles[3],titles[4],titles[5],titles[6],titles[7],titles[8],"all"};
+			gd.addChoice("Which files?", names9, titles[0]);
+			break;
+
+			case 10: 
+			String[] names10 = {titles[0], titles[1], titles[2],titles[3],titles[4],titles[5],titles[6],titles[7],titles[8],titles[9],"all"};
+			gd.addChoice("Which files?", names10, titles[0]);
+			break;
+
+			case 11: 
+			String[] names11 = {titles[0], titles[1], titles[2],titles[3],titles[4],titles[5],titles[6],titles[7],titles[8],titles[9],titles[10],"all"};
+			gd.addChoice("Which files?", names11, titles[0]);
+			break;
+
+			case 12: 
+			String[] names12 = {titles[0], titles[1], titles[2],titles[3],titles[4],titles[5],titles[6],titles[7],titles[8],titles[9],titles[10],titles[11],"all"};
+			gd.addChoice("Which files?", names12, titles[0]);
+			break;
+
+			case 13: 
+			String[] names13 = {titles[0], titles[1], titles[2],titles[3],titles[4],titles[5],titles[6],titles[7],titles[8],titles[9],titles[10],titles[11],titles[12],"all"};
+			gd.addChoice("Which files?", names13, titles[0]);
+			break;
+
+			case 14: 
+			String[] names14 = {titles[0], titles[1], titles[2],titles[3],titles[4],titles[5],titles[6],titles[7],titles[8],titles[9],titles[10],titles[11],titles[12],titles[13],"all"};
+			gd.addChoice("Which files?", names14, titles[0]);
+			break;
+
+			case 15: 
+			String[] names15 = {titles[0], titles[1], titles[2],titles[3],titles[4],titles[5],titles[6],titles[7],titles[8],titles[9],titles[10],titles[11],titles[12],titles[13],titles[14],"all"};
+			gd.addChoice("Which files?", names15, titles[0]);
+			break;
+
+			default: IJ.error("Lutra does not support more than 15 open Images or Stacks. Please close any superfluous windows.");
+			return;		
 		}
 		gd.addChoice("Choose Color Channel", editp, "red");
-		gd.addCheckbox("Are the chosen files Stacks?", false);
+		gd.addCheckbox("Do the files include Stacks?", false);
 		gd.addChoice("Savemode?", savemodes, "Don't save");
 		gd.showDialog();
 		if (gd.wasCanceled()) return; // User may cancel Plugin
@@ -712,6 +755,27 @@ public class Lutra1_2 implements PlugIn{
 		else if (imagename == titles[7]){IJ.selectWindow(titles[7]);
 			CalculationOfDosered(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[7]); // Calculates dose for every opened image}	
 		}
+		else if (imagename == titles[8]){IJ.selectWindow(titles[8]);
+			CalculationOfDosered(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[8]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[9]){IJ.selectWindow(titles[9]);
+			CalculationOfDosered(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[9]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[10]){IJ.selectWindow(titles[10]);
+			CalculationOfDosered(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[10]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[11]){IJ.selectWindow(titles[11]);
+			CalculationOfDosered(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[11]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[12]){IJ.selectWindow(titles[12]);
+			CalculationOfDosered(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[12]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[13]){IJ.selectWindow(titles[13]);
+			CalculationOfDosered(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[13]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[14]){IJ.selectWindow(titles[14]);
+			CalculationOfDosered(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[14]); // Calculates dose for every opened image}	
+		}
 		else{}} 
 		
 		else if (editop == "green"){
@@ -746,6 +810,27 @@ public class Lutra1_2 implements PlugIn{
 		}
 		else if (imagename == titles[7]){IJ.selectWindow(titles[7]);
 			CalculationOfDosegreen(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[7]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[8]){IJ.selectWindow(titles[8]);
+			CalculationOfDosegreen(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[8]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[9]){IJ.selectWindow(titles[9]);
+			CalculationOfDosegreen(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[9]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[10]){IJ.selectWindow(titles[10]);
+			CalculationOfDosegreen(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[10]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[11]){IJ.selectWindow(titles[11]);
+			CalculationOfDosegreen(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[11]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[12]){IJ.selectWindow(titles[12]);
+			CalculationOfDosegreen(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[12]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[13]){IJ.selectWindow(titles[13]);
+			CalculationOfDosegreen(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[13]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[14]){IJ.selectWindow(titles[14]);
+			CalculationOfDosegreen(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[14]); // Calculates dose for every opened image}	
 		}
 		else{}}
 
@@ -782,6 +867,27 @@ public class Lutra1_2 implements PlugIn{
 		else if (imagename == titles[7]){IJ.selectWindow(titles[7]);
 			CalculationOfDoseblue(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[7]); // Calculates dose for every opened image}	
 		}
+		else if (imagename == titles[8]){IJ.selectWindow(titles[8]);
+			CalculationOfDoseblue(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[8]); // Calculates dose for every opened image}
+		}
+		else if (imagename == titles[9]){IJ.selectWindow(titles[9]);
+			CalculationOfDoseblue(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[9]); // Calculates dose for every opened image}
+		}	
+		else if (imagename == titles[10]){IJ.selectWindow(titles[10]);
+			CalculationOfDoseblue(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[10]); // Calculates dose for every opened image}
+		}	
+		else if (imagename == titles[11]){IJ.selectWindow(titles[11]);
+			CalculationOfDoseblue(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[11]); // Calculates dose for every opened image}
+		}	
+		else if (imagename == titles[12]){IJ.selectWindow(titles[12]);
+			CalculationOfDoseblue(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[12]); // Calculates dose for every opened image}
+		}
+		else if (imagename == titles[13]){IJ.selectWindow(titles[13]);
+			CalculationOfDoseblue(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[13]); // Calculates dose for every opened image}
+		}
+		else if (imagename == titles[14]){IJ.selectWindow(titles[14]);
+			CalculationOfDoseblue(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[14]); // Calculates dose for every opened image}
+		}
 		else{}} else{}}
 		else{
 		if (editop == "red"){
@@ -817,7 +923,28 @@ public class Lutra1_2 implements PlugIn{
 		else if (imagename == titles[7]){IJ.selectWindow(titles[7]);
 			CalculationOfDoseredstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[7]); // Calculates dose for every opened image}	
 		}
-		else{}} 
+		else if (imagename == titles[8]){IJ.selectWindow(titles[8]);
+			CalculationOfDoseredstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[8]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[9]){IJ.selectWindow(titles[9]);
+			CalculationOfDoseredstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[9]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[10]){IJ.selectWindow(titles[10]);
+			CalculationOfDoseredstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[10]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[11]){IJ.selectWindow(titles[11]);
+			CalculationOfDoseredstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[11]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[12]){IJ.selectWindow(titles[12]);
+			CalculationOfDoseredstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[12]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[13]){IJ.selectWindow(titles[13]);
+			CalculationOfDoseredstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[13]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[14]){IJ.selectWindow(titles[14]);
+			CalculationOfDoseredstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[14]); // Calculates dose for every opened image}	
+		}
+		else{}}
 		
 		else if (editop == "green"){
 		if(imagename == "all"){
@@ -851,6 +978,27 @@ public class Lutra1_2 implements PlugIn{
 		}
 		else if (imagename == titles[7]){IJ.selectWindow(titles[7]);
 			CalculationOfDosegreenstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[7]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[8]){IJ.selectWindow(titles[8]);
+			CalculationOfDosegreenstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[8]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[9]){IJ.selectWindow(titles[9]);
+			CalculationOfDosegreenstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[9]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[10]){IJ.selectWindow(titles[10]);
+			CalculationOfDosegreenstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[10]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[11]){IJ.selectWindow(titles[11]);
+			CalculationOfDosegreenstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[11]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[12]){IJ.selectWindow(titles[12]);
+			CalculationOfDosegreenstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[12]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[13]){IJ.selectWindow(titles[13]);
+			CalculationOfDosegreenstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[13]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[14]){IJ.selectWindow(titles[14]);
+			CalculationOfDosegreenstack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[14]); // Calculates dose for every opened image}	
 		}
 		else{}}
 
@@ -886,6 +1034,27 @@ public class Lutra1_2 implements PlugIn{
 		}
 		else if (imagename == titles[7]){IJ.selectWindow(titles[7]);
 			CalculationOfDosebluestack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[7]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[8]){IJ.selectWindow(titles[8]);
+			CalculationOfDosebluestack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[8]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[9]){IJ.selectWindow(titles[9]);
+			CalculationOfDosebluestack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[9]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[10]){IJ.selectWindow(titles[10]);
+			CalculationOfDosebluestack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[10]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[11]){IJ.selectWindow(titles[11]);
+			CalculationOfDosebluestack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[11]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[12]){IJ.selectWindow(titles[12]);
+			CalculationOfDosebluestack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[12]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[13]){IJ.selectWindow(titles[13]);
+			CalculationOfDosebluestack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[13]); // Calculates dose for every opened image}	
+		}
+		else if (imagename == titles[14]){IJ.selectWindow(titles[14]);
+			CalculationOfDosebluestack(directory,numberoffiles,p1,p2,p3,bckg,unexp,maxdos,titles[14]); // Calculates dose for every opened image}	
 		}
 		else{}} else{}}
 	} // void run
