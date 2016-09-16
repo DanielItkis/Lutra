@@ -512,6 +512,7 @@ public class Lutra1_2 implements PlugIn{
 		String savemode=new String(); // contains the choosen saving option
 		String[] editp={"red", "green", "blue", "all"}; // Scroll-down for editing p-values
 		String[] film = {"EBT3", "HD810"};
+		String[] scan = {"Profil 3 (Gamma 1.8)", "Gamma 1"};
 		String directory = new String(); // contains the directory that the image will be saved to
 		GenericDialog gd, customgd; // interaction with the user
 		ImagePlus img; // needed for accessing the opened images
@@ -616,6 +617,7 @@ public class Lutra1_2 implements PlugIn{
 		gd.addChoice("Choose Color Channel", editp, "red");
 		gd.addCheckbox("Do the files include Stacks?", false);
 		gd.addChoice("Kind of film:", film, "EBT3");
+		gd.addChoice("Scan parameter:", scan, "Profil 3 (Gamma 1.8");
 		gd.addChoice("Savemode?", savemodes, "Don't save");
 		gd.showDialog();
 		if (gd.wasCanceled()) return; // User may cancel Plugin
@@ -625,17 +627,34 @@ public class Lutra1_2 implements PlugIn{
 		String imagename = gd.getNextChoice();
 		String editop = gd.getNextChoice();
 		String films = gd.getNextChoice();
+		String scans = gd.getNextChoice();
 		savemode=gd.getNextChoice();
 
 		double p1r, p2r, p3r, bckgr, unexpr, maxdosr, p1g, p2g, p3g, bckgg, unexpg, maxdosg, p1b, p2b, p3b, bckgb, unexpb, maxdosb;  
+		
+		
 		if(films == "EBT3"){
-			p1r = 10.22; p2r = 2.97; p3r = 1.8; bckgr = 0; unexpr = 170; maxdosr = 40; 
-			p1g = 19.18; p2g = 44.82; p3g = 2.04; bckgg = 0; unexpg = 170.9; maxdosg = 40; 
-			p1b = 103.98; p2b = 1.945; p3b = 0; bckgb = 0; unexpb = 75.7; maxdosb = 40; 
-			}else{
+			if (scans == "Profil 3 (Gamma 1.8)"){ //Values for EBT3 RCFs with regular scanning settings
+			p1r = -10; p2r = 22.80; p3r = 1.05; bckgr = 0; unexpr = 170; maxdosr = 15; 
+			p1g = 29.19; p2g = 38.12; p3g = 2.24; bckgg = 0; unexpg = 170.9; maxdosg = 64; 
+			p1b = 148.16; p2b = 161.83; p3b = 3.550; bckgb = 0; unexpb = 75.7; maxdosb = 64; 
+			}
+			else {  //Values for EBT3 RCFs with Gamma 1 scanning
+			p1r = 27.55; p2r = 754.99; p3r = 5.96; bckgr = 0; unexpr =205.0; maxdosr = 64; 
+			p1g = 57.84; p2g = 359.19; p3g = 2.99; bckgg = 0; unexpg = 207.9; maxdosg = 64; 
+			p1b = 237.17; p2b = 1327; p3b = 2.798; bckgb = 0; unexpb = 141.1; maxdosb = 64;
+			}}
+		else{
+			if (scans == "Profil 3 (Gamma 1.8)"){ //Values for HD810 RCFs with regular scanning settings
+			p1r = 318.62; p2r = 0.02; p3r = 0; bckgr = 0; unexpr = 230.8; maxdosr = 64; 
+			p1g = 1321.9; p2g = 0.484; p3g = 0; bckgg = 0; unexpg = 238.14; maxdosg = 64; 
+			p1b = 0; p2b = 0; p3b = 0; bckgb = 0; unexpb = 236.95; maxdosb = 0;
+			}
+			else { //Values for HD810 RCFs with Gamma 1 scanning
 			p1r = 0; p2r = 0; p3r = 0; bckgr = 0; unexpr = 0; maxdosr = 0; 
 			p1g = 0; p2g = 0; p3g = 0; bckgg = 0; unexpg = 0; maxdosg = 0; 
-			p1b = 0; p2b = 0; p3b = 0; bckgb = 0; unexpb = 0; maxdosb = 0;
+			p1b = 0; p2b = 0; p3b = 0; bckgb = 0; unexpb = 0; maxdosb = 0;	
+				}
 			}
 
 			if (editop.equals("blue")==true){
