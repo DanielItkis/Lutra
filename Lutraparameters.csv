@@ -1,0 +1,19 @@
+## This is a parameters list for Lutra. For adding a new or changeing existing parameter sets 
+## use ";" as a separator (without quotation marks). Every parameter set must consist of a 
+## set number, a Profile name, a short profile description, and a set of values for
+## p1, p2, p3, the Scanner's dark current, the brightness of an unexposed pixel and the
+## maximum dose the film can show accurately.  Every set must therefore consist of exactly
+## 9 terms separated by semicolons. Make sure to give every new parameter set 
+## a unique and selfexplainatory profile name which does not contain a semicolon (also the case for the 
+## description). Note that depending on your country either a "." or a "," may be required for input of 
+## values. If error "java.util.InputMismatchException" arises check your computer's settings. 
+
+Number; Profile; description; p1; p2; p3; Dark current; unexposed; Maximum Dose;
+1.;Profile 3 (red, EBT3); Gamma 1.8, default setting on scanner, with EBT3 film;10,22;2,97;1,8;0;170;40;
+2.;Profile 3 (green, EBT3); Gamma 1.8, default setting on scanner, with EBT3 film;19,18;44,81;2,04;0;170,9;40;
+3.;Profile 3 (blue, EBT3); Gamma 1.8, default setting on scanner, with EBT3 film;103,98;1,945;0;0;75,7;40;
+4.;Gamma 1 (red, EBT3); brighter than Profile 3, Gamma 1, with EBT3 films;27,15;754,99;5,96;0;205,0;64;
+5.;Gamma 1 (green, EBT3); brighter than Profile 3, Gamma 1, with EBT3 films;57,84;359,19;2,99;0;207,9;64;
+6.;Gamma 1 (blue, EBT3); brighter than Profile 3, Gamma 1, with EBT3 films;237,17;1327;2,798;0;141,1;64;
+7.;Profile 3 (red, HD810);Gamma 1.8, default setting on scanner, with HD810 film;318,62;0,02;0;0;230,8;64;
+8.;Profile 3 (green, HD810);Gamma 1.8, default setting on scanner, with HD810 film;1321,9;0,484;0;0;238,14;15;
